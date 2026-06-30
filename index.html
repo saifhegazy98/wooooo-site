@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WOOOOO — You are more than what can be measured</title>
+<meta name="description" content="WOOOOO makes products that support you instead of constantly evaluating you. The first is an elegant bracelet with no electronics. It tracks nothing. Improve because you love yourself." />
+<meta property="og:title" content="WOOOOO — You are more than what can be measured" />
+<meta property="og:description" content="A bracelet that tracks nothing. The realest place on the internet. Improve because you love yourself — not because you think you're broken." />
+<meta property="og:type" content="website" />
+<meta name="theme-color" content="#0E0E10" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#0E0E10; --ink-2:#141417; --ink-3:#1B1C1E;
+    --paper:#F6F4EF; --mist:#A9A6B3; --mist-2:#76747F;
+    --violet:#6E5AF0; --violet-soft:#9A8BF6; --warmth:#FF6B6B;
+    --cloud:#E9E6E0; --sage:#9BA890; --ocean:#46555F; --sand:#C8B69B; --obsidian:#1B1C1E;
+    --line:rgba(255,255,255,0.08);
+    --sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    --serif:'Fraunces',Georgia,serif;
+    --max:1120px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--ink);color:var(--paper);font-family:var(--sans);
+    line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+    font-size:17px;letter-spacing:-0.01em;
+  }
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--violet);color:#fff}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
+  .serif{font-family:var(--serif);font-weight:400;letter-spacing:-0.02em}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px 28px;backdrop-filter:blur(14px);
+    background:linear-gradient(to bottom,rgba(14,14,16,0.85),rgba(14,14,16,0));
+    transition:background .3s;}
+  .logo{font-weight:600;font-size:20px;letter-spacing:0.12em;display:flex;align-items:center;gap:10px}
+  .logo .dot{width:8px;height:8px;border-radius:50%;background:var(--violet);
+    box-shadow:0 0 14px 2px var(--violet);animation:pulse 3.2s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:.55;transform:scale(.85)}50%{opacity:1;transform:scale(1.15)}}
+  .nav-links{display:flex;align-items:center;gap:30px;font-size:14px;color:var(--mist)}
+  .nav-links a:hover{color:var(--paper)}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--paper);color:var(--ink);
+    font-weight:500;font-size:14px;padding:11px 20px;border-radius:100px;border:none;cursor:pointer;
+    transition:transform .2s,box-shadow .3s;}
+  .btn:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(246,244,239,0.15)}
+  .btn.ghost{background:transparent;color:var(--paper);border:1px solid var(--line)}
+  .btn.ghost:hover{border-color:rgba(255,255,255,0.3);box-shadow:none}
+  @media(max-width:720px){.nav-links a:not(.btn){display:none}}
+
+  /* HERO */
+  header{position:relative;min-height:100vh;display:flex;align-items:center;
+    padding:120px 0 60px;overflow:hidden}
+  .hero-glow{position:absolute;top:42%;left:50%;width:780px;height:780px;
+    transform:translate(-50%,-50%);border-radius:50%;
+    background:radial-gradient(circle,rgba(110,90,240,0.22),rgba(110,90,240,0) 62%);
+    filter:blur(20px);pointer-events:none;z-index:0;animation:breathe 7s ease-in-out infinite}
+  @keyframes breathe{0%,100%{opacity:.7;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.08)}}
+  .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;
+    gap:40px;align-items:center}
+  @media(max-width:880px){.hero-grid{grid-template-columns:1fr;text-align:center}}
+  .eyebrow{font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:var(--violet-soft);
+    margin-bottom:22px;font-weight:500}
+  h1{font-family:var(--serif);font-weight:400;font-size:clamp(40px,6vw,68px);
+    line-height:1.04;letter-spacing:-0.025em;margin-bottom:24px}
+  h1 em{font-style:italic;color:var(--violet-soft)}
+  .hero p.sub{font-size:19px;color:var(--mist);max-width:46ch;margin-bottom:34px}
+  @media(max-width:880px){.hero p.sub{margin-left:auto;margin-right:auto}}
+  .hero-cta{display:flex;gap:14px;align-items:center}
+  @media(max-width:880px){.hero-cta{justify-content:center}}
+  .hero-cta .note{font-size:13px;color:var(--mist-2)}
+  .bracelet-stage{position:relative;display:flex;justify-content:center;align-items:center}
+  .bracelet-stage svg{width:min(420px,86vw);height:auto;filter:drop-shadow(0 30px 60px rgba(0,0,0,0.6))}
+  .float{position:absolute;font-size:13px;color:var(--violet-soft);opacity:0;
+    animation:floatup 6s ease-in-out infinite;pointer-events:none;white-space:nowrap}
+  @keyframes floatup{0%{opacity:0;transform:translateY(20px)}15%{opacity:.9}85%{opacity:.9}100%{opacity:0;transform:translateY(-60px)}}
+
+  /* SECTIONS */
+  section{position:relative;padding:110px 0}
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease}
+  .reveal.in{opacity:1;transform:none}
+  .kicker{font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:var(--mist-2);
+    margin-bottom:20px;font-weight:500}
+  h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,4.4vw,46px);line-height:1.1;
+    letter-spacing:-0.02em;margin-bottom:20px}
+  .lede{font-size:20px;color:var(--mist);max-width:60ch}
+
+  /* BELIEF */
+  .belief{text-align:center}
+  .belief .manifesto{font-family:var(--serif);font-size:clamp(26px,3.6vw,40px);line-height:1.32;
+    max-width:18ch;margin:0 auto;letter-spacing:-0.02em}
+  .belief .manifesto span{color:var(--violet-soft)}
+  .belief .sig{margin-top:30px;font-size:15px;color:var(--mist-2);letter-spacing:0.04em}
+
+  /* OBJECT */
+  .object-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:54px}
+  @media(max-width:760px){.object-grid{grid-template-columns:1fr}}
+  .card{background:linear-gradient(180deg,var(--ink-2),var(--ink));border:1px solid var(--line);
+    border-radius:18px;padding:30px 26px;transition:border-color .3s,transform .3s}
+  .card:hover{border-color:rgba(255,255,255,0.16);transform:translateY(-4px)}
+  .card .ic{font-size:26px;margin-bottom:16px;display:block}
+  .card h3{font-size:18px;font-weight:600;margin-bottom:8px;letter-spacing:-0.01em}
+  .card p{font-size:15px;color:var(--mist);line-height:1.6}
+  .specs{display:flex;flex-wrap:wrap;gap:14px;margin-top:46px;justify-content:center}
+  .chip{border:1px solid var(--line);border-radius:100px;padding:10px 18px;font-size:14px;
+    color:var(--mist);display:flex;align-items:center;gap:8px}
+  .chip b{color:var(--paper);font-weight:500}
+
+  /* COLORWAYS */
+  .colorways{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-top:48px}
+  .sw{text-align:center}
+  .sw .dotc{width:74px;height:74px;border-radius:50%;margin:0 auto 12px;
+    border:1px solid rgba(255,255,255,0.1);transition:transform .3s}
+  .sw:hover .dotc{transform:scale(1.08)}
+  .sw .nm{font-size:14px;font-weight:500}
+  .sw .hx{font-size:12px;color:var(--mist-2);font-family:monospace}
+
+  /* APP / MOVEMENT */
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:48px}
+  @media(max-width:760px){.two{grid-template-columns:1fr}}
+  .room{background:linear-gradient(180deg,var(--ink-2),var(--ink));border:1px solid var(--line);
+    border-radius:22px;padding:38px 32px}
+  .room .tag{font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--violet-soft);
+    font-weight:500;margin-bottom:14px}
+  .room h3{font-family:var(--serif);font-weight:400;font-size:26px;margin-bottom:14px}
+  .room p{font-size:15px;color:var(--mist);margin-bottom:20px}
+  .moment{background:var(--ink-3);border:1px solid var(--line);border-radius:14px;
+    padding:16px 18px;font-size:15px;display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px}
+  .moment .w{color:var(--violet-soft);font-size:13px;white-space:nowrap;font-weight:500}
+  .moment .w.heart{color:var(--warmth)}
+
+  /* WAITLIST */
+  .waitlist{text-align:center}
+  .form{display:flex;gap:10px;max-width:480px;margin:34px auto 0}
+  @media(max-width:560px){.form{flex-direction:column}}
+  .form input{flex:1;background:var(--ink-2);border:1px solid var(--line);border-radius:100px;
+    padding:15px 22px;color:var(--paper);font-size:16px;font-family:var(--sans);outline:none;transition:border-color .25s}
+  .form input:focus{border-color:var(--violet)}
+  .form .btn{padding:15px 26px;white-space:nowrap}
+  .ok{margin-top:22px;color:var(--sage);font-size:15px;display:none}
+  .ok.show{display:block;animation:floatup-soft .6s ease}
+  @keyframes floatup-soft{from{opacity:0;transform:translateY(8px)}to{opacity:1}}
+  .privacy{margin-top:16px;font-size:13px;color:var(--mist-2)}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--line);padding:50px 0 60px;text-align:center;color:var(--mist-2);font-size:14px}
+  footer .logo{justify-content:center;margin-bottom:18px;color:var(--paper)}
+  footer .links{display:flex;gap:24px;justify-content:center;margin-bottom:22px;flex-wrap:wrap}
+  footer .links a:hover{color:var(--paper)}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#top" class="logo"><span class="dot"></span>WOOOOO</a>
+  <div class="nav-links">
+    <a href="#belief">The belief</a>
+    <a href="#object">The bracelet</a>
+    <a href="#movement">The movement</a>
+    <a href="#join" class="btn">Join the waitlist</a>
+  </div>
+</nav>
+
+<header id="top">
+  <div class="hero-glow"></div>
+  <div class="wrap hero-grid hero">
+    <div>
+      <div class="eyebrow">A different kind of company</div>
+      <h1>You are more than<br>what can be <em>measured.</em></h1>
+      <p class="sub">The world scores your sleep, your steps, your worth. We make products that support you instead of evaluating you. The first is a bracelet with no electronics. It tracks nothing — on purpose.</p>
+      <div class="hero-cta">
+        <a href="#join" class="btn">Join the waitlist</a>
+        <span class="note">No spam. Just a WOOOOO when we launch.</span>
+      </div>
+    </div>
+    <div class="bracelet-stage">
+      <div class="float" style="top:8%;left:6%;animation-delay:0s">you've got this</div>
+      <div class="float" style="top:20%;right:2%;animation-delay:2.4s">＋ a WOOOOO</div>
+      <div class="float" style="bottom:12%;left:0;animation-delay:4.2s">glad you're here</div>
+      <!-- The Wave — open cuff, Obsidian. Even-weight band (stroked centerline) + crest swell + violet underglow -->
+      <svg viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The WOOOOO bracelet — an open cuff with a single wave crest">
+        <defs>
+          <linearGradient id="body" x1="0.15" y1="0" x2="0.85" y2="1">
+            <stop offset="0" stop-color="#4C4D54"/>
+            <stop offset="0.5" stop-color="#202126"/>
+            <stop offset="1" stop-color="#0A0B0D"/>
+          </linearGradient>
+          <linearGradient id="edge" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#6E6F77" stop-opacity="0.85"/>
+            <stop offset="1" stop-color="#6E6F77" stop-opacity="0"/>
+          </linearGradient>
+          <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="10"/>
+          </filter>
+        </defs>
+        <!-- violet underglow -->
+        <path d="M250 96 C 214 66, 166 62, 136 82 C 98 106, 72 140, 72 184 C 72 234, 100 272, 146 288 C 186 301, 234 290, 264 250"
+              fill="none" stroke="#6E5AF0" stroke-width="50" stroke-linecap="round" opacity="0.20" filter="url(#soft)"/>
+        <!-- main band (even weight) -->
+        <path d="M250 96 C 214 66, 166 62, 136 82 C 98 106, 72 140, 72 184 C 72 234, 100 272, 146 288 C 186 301, 234 290, 264 250"
+              fill="none" stroke="url(#body)" stroke-width="33" stroke-linecap="round"/>
+        <!-- crest swell — the wave just before it breaks -->
+        <path d="M214 74 C 190 62, 160 60, 132 82"
+              fill="none" stroke="url(#body)" stroke-width="47" stroke-linecap="round"/>
+        <!-- soft-touch top sheen -->
+        <path d="M250 96 C 214 66, 166 62, 136 82 C 110 99, 88 126, 78 158"
+              fill="none" stroke="url(#edge)" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<section id="belief" class="belief">
+  <div class="wrap reveal">
+    <div class="kicker">The belief</div>
+    <p class="manifesto">Improve because you <span>love yourself.</span> Not because you think you're broken.</p>
+    <p class="sig">Measurement is a tool. It is not your identity.</p>
+  </div>
+</section>
+
+<section id="object">
+  <div class="wrap reveal" style="text-align:center">
+    <div class="kicker">The bracelet</div>
+    <h2>One sculptural object.<br>Zero electronics.</h2>
+    <p class="lede" style="margin:0 auto">It was born from three images — a curling leaf, a cresting wave, an arm around a shoulder. We kept the wave. It's comfortable enough that you'll forget you're wearing it, which is exactly the point.</p>
+    <div class="object-grid">
+      <div class="card"><span class="ic">🍃</span><h3>The Leaf</h3><p>Curl inward to protect what's real about you.</p></div>
+      <div class="card"><span class="ic">🌊</span><h3>The Wave</h3><p>Encouragement, caught in the moment just before it breaks.</p></div>
+      <div class="card"><span class="ic">🫂</span><h3>The Embrace</h3><p>An arm around your shoulder. Quiet. Always there.</p></div>
+    </div>
+    <div class="specs">
+      <span class="chip"><b>No sensors.</b> Tracks nothing.</span>
+      <span class="chip"><b>One size.</b> Bend it to fit.</span>
+      <span class="chip"><b>Soft-touch matte.</b> Premium feel.</span>
+      <span class="chip"><b>Wear it everywhere.</b> Shower, gym, sleep.</span>
+    </div>
+  </div>
+</section>
+
+<section id="colors" style="padding-top:0">
+  <div class="wrap reveal" style="text-align:center">
+    <div class="kicker">Colours that speak to you</div>
+    <h2 class="serif" style="font-size:clamp(24px,3vw,34px)">Five quiet tones</h2>
+    <div class="colorways">
+      <div class="sw"><div class="dotc" style="background:#1B1C1E"></div><div class="nm">Obsidian</div><div class="hx">#1B1C1E</div></div>
+      <div class="sw"><div class="dotc" style="background:#E9E6E0"></div><div class="nm">Cloud</div><div class="hx">#E9E6E0</div></div>
+      <div class="sw"><div class="dotc" style="background:#9BA890"></div><div class="nm">Sage</div><div class="hx">#9BA890</div></div>
+      <div class="sw"><div class="dotc" style="background:#46555F"></div><div class="nm">Ocean</div><div class="hx">#46555F</div></div>
+      <div class="sw"><div class="dotc" style="background:#C8B69B"></div><div class="nm">Sand</div><div class="hx">#C8B69B</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="movement">
+  <div class="wrap reveal" style="text-align:center">
+    <div class="kicker">The movement</div>
+    <h2>The realest place on the internet.</h2>
+    <p class="lede" style="margin:0 auto">Two rooms in one house. One for everyone. One just for you. No followers. No likes. No comparison. Only encouragement.</p>
+    <div class="two">
+      <div class="room" style="text-align:left">
+        <div class="tag">WOOOOO Together · for everyone</div>
+        <h3>Send a stranger a WOOOOO.</h3>
+        <p>Share a moment — a win, a struggle, a goodbye. No comments, no advice. Just thousands of tiny lights from people quietly rooting for you.</p>
+        <div class="moment"><span>I finally got the job.</span><span class="w">🟣 2,341</span></div>
+        <div class="moment"><span>Brushed my teeth after weeks.</span><span class="w">🟣 18,402</span></div>
+        <div class="moment"><span>Said goodbye to someone I love.</span><span class="w heart">❤️ 35,201</span></div>
+      </div>
+      <div class="room" style="text-align:left">
+        <div class="tag">WOOOOO Companion · with the bracelet</div>
+        <h3>The one app on your side.</h3>
+        <p>No sensors. No fake data. It remembers your story and reflects it back when you need it. Put the bracelet on, and it quietly says: glad you're here.</p>
+        <div class="moment"><span>“Eight months ago you almost didn't start.”</span><span class="w">memory</span></div>
+        <div class="moment"><span>“You don't have to win today. Just meet it.”</span><span class="w">morning</span></div>
+        <div class="moment"><span>Need a WOOOOO?</span><span class="w">one tap</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="join" class="waitlist">
+  <div class="wrap reveal">
+    <div class="kicker">Be early</div>
+    <h2>Join the people who'd rather<br>feel lighter than be scored.</h2>
+    <p class="lede" style="margin:0 auto 6px">We'll send one WOOOOO the day it launches. Nothing else.</p>
+    <form class="form" id="waitform" novalidate>
+      <input type="email" id="email" placeholder="your@email.com" autocomplete="email" required aria-label="Email address" />
+      <button type="submit" class="btn">Send me a WOOOOO →</button>
+    </form>
+    <div class="ok" id="ok">🟣 You're on the list. Glad you're here.</div>
+    <p class="privacy">We will never sell your data. You are more than a data point — we mean it.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a href="#top" class="logo"><span class="dot"></span>WOOOOO</a>
+    <div class="links">
+      <a href="#belief">The belief</a>
+      <a href="#object">The bracelet</a>
+      <a href="#movement">The movement</a>
+      <a href="#join">Waitlist</a>
+    </div>
+    <p>People are more than what can be measured.</p>
+    <p style="margin-top:8px;opacity:.6">© 2026 WOOOOO. Made with care, not metrics.</p>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  // Nav bg on scroll
+  const nav=document.getElementById('nav');
+  addEventListener('scroll',()=>{nav.style.background=scrollY>40?'rgba(14,14,16,0.92)':'';});
+  // Waitlist — posts to FormSubmit (free, no account). First real signup triggers a
+  // one-time activation email to the alias below; click it once and capture goes live.
+  const WAITLIST_ENDPOINT='https://formsubmit.co/ajax/saif.fhegazy+woooowaitlist@gmail.com';
+  const form=document.getElementById('waitform'),ok=document.getElementById('ok'),email=document.getElementById('email');
+  form.addEventListener('submit',async(e)=>{
+    e.preventDefault();
+    const v=(email.value||'').trim();
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){email.focus();email.style.borderColor='#FF6B6B';return;}
+    try{const list=JSON.parse(localStorage.getItem('wooooo_waitlist')||'[]');list.push({e:v,t:Date.now()});localStorage.setItem('wooooo_waitlist',JSON.stringify(list));}catch(_){}
+    form.style.display='none';ok.classList.add('show');
+    try{
+      await fetch(WAITLIST_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
+        body:JSON.stringify({email:v,_subject:'New WOOOOO waitlist signup',_template:'table',_captcha:'false'})});
+    }catch(_){ /* local copy already stored; never block the warm moment */ }
+  });
+</script>
+</body>
+</html>
