@@ -136,6 +136,22 @@
   .moment .w{color:var(--violet-soft);font-size:13px;white-space:nowrap;font-weight:500}
   .moment .w.heart{color:var(--warmth)}
 
+  /* PAIRING GAG */
+  .pair-card{max-width:540px;margin:34px auto 0;background:linear-gradient(180deg,var(--ink-2),var(--ink));
+    border:1px solid var(--line);border-radius:20px;padding:34px 28px;min-height:120px;
+    display:flex;flex-direction:column;align-items:center;gap:18px}
+  .pair-log{width:100%;font-family:monospace;font-size:14px;text-align:left;color:var(--mist);
+    display:flex;flex-direction:column;gap:10px}
+  .pair-log:empty{display:none}
+  .pair-line{display:flex;align-items:center;gap:11px;opacity:0;transform:translateY(6px);animation:lineIn .4s forwards}
+  @keyframes lineIn{to{opacity:1;transform:none}}
+  .pair-line .sp{width:13px;height:13px;border:2px solid var(--mist-2);border-top-color:var(--violet);
+    border-radius:50%;animation:spin .7s linear infinite;flex:none}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .pair-line .ck{color:var(--violet-soft);flex:none;width:13px;text-align:center}
+  .pair-line.warm{color:var(--paper);font-family:var(--sans)}
+  .pair-line.big{font-family:var(--serif);font-size:19px;color:var(--violet-soft);line-height:1.4}
+
   /* WAITLIST */
   .waitlist{text-align:center}
   .form{display:flex;gap:10px;max-width:480px;margin:34px auto 0}
@@ -275,11 +291,24 @@
       <div class="room" style="text-align:left">
         <div class="tag">WOOOOO Companion · with the bracelet</div>
         <h3>The one app on your side.</h3>
-        <p>No sensors. No fake data. It remembers your story and reflects it back when you need it. Put the bracelet on, and it quietly says: glad you're here.</p>
+        <p>No sensors. No fake data — ever. It has no idea whether the bracelet is on your wrist, and it'll cheerfully pretend to connect to it anyway. Mostly it just remembers your story and hands it back when you need it.</p>
         <div class="moment"><span>“Eight months ago you almost didn't start.”</span><span class="w">memory</span></div>
-        <div class="moment"><span>“You don't have to win today. Just meet it.”</span><span class="w">morning</span></div>
+        <div class="moment"><span>“Connecting to your WOOOOO… oh, it didn't need to.”</span><span class="w">the joke</span></div>
         <div class="moment"><span>Need a WOOOOO?</span><span class="w">one tap</span></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="pair">
+  <div class="wrap reveal" style="text-align:center">
+    <div class="kicker">The companion app</div>
+    <h2>Let's connect your WOOOOO.</h2>
+    <p class="lede" style="margin:0 auto">Go on. Pair it. We'll wait.</p>
+    <div class="pair-card">
+      <button class="btn" id="pairBtn">Connect my WOOOOO</button>
+      <div class="pair-log" id="pairLog" aria-live="polite"></div>
+      <button class="btn ghost" id="pairAgain" style="display:none">Run it again 🙂</button>
     </div>
   </div>
 </section>
@@ -319,6 +348,39 @@
   // Nav bg on scroll
   const nav=document.getElementById('nav');
   addEventListener('scroll',()=>{nav.style.background=scrollY>40?'rgba(14,14,16,0.92)':'';});
+  // The pairing gag — a joke that means something
+  const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+  const pairBtn=document.getElementById('pairBtn'),pairAgain=document.getElementById('pairAgain'),pairLog=document.getElementById('pairLog');
+  const steps=[
+    {t:'Connecting to your WOOOOO…',spin:1,hold:1000},
+    {t:'Searching for sensors…',spin:1,hold:1000},
+    {t:'Calibrating heart rate…',spin:1,hold:1000},
+    {t:'Syncing your biometrics…',spin:1,hold:1100},
+    {t:'Establishing secure link…',spin:1,hold:1200},
+    {t:'…oh.',warm:1,hold:1100},
+    {t:"There's nothing in there.",warm:1,hold:1100},
+    {t:'It’s a bracelet. We got a little excited.',warm:1,hold:1500},
+    {t:'You don’t need a chip to be worth something.',big:1,hold:1500},
+    {t:'Neither does it.',big:1,hold:1700},
+    {t:'✓ Paired. You always were. 🟣',big:1,done:1,hold:0}
+  ];
+  async function runPair(){
+    pairBtn.style.display='none';pairAgain.style.display='none';pairLog.innerHTML='';
+    let prev=null;
+    for(const s of steps){
+      if(prev&&prev.dataset.spin){const sp=prev.querySelector('.sp');if(sp){const c=document.createElement('span');c.className='ck';c.textContent='✓';sp.replaceWith(c);}}
+      const line=document.createElement('div');
+      line.className='pair-line'+(s.warm?' warm':'')+(s.big?' big':'');
+      if(s.spin){line.dataset.spin='1';const sp=document.createElement('span');sp.className='sp';const tx=document.createElement('span');tx.textContent=s.t;line.append(sp,tx);}
+      else{line.textContent=s.t;}
+      pairLog.appendChild(line);prev=line;
+      await sleep(s.hold);
+    }
+    pairAgain.style.display='';
+  }
+  pairBtn.addEventListener('click',runPair);
+  pairAgain.addEventListener('click',runPair);
+
   // Waitlist — posts to FormSubmit (free, no account). First real signup triggers a
   // one-time activation email to the alias below; click it once and capture goes live.
   const WAITLIST_ENDPOINT='https://formsubmit.co/ajax/saif.fhegazy+woooowaitlist@gmail.com';
