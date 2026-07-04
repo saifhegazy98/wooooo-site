@@ -3,44 +3,39 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>WOOOOO — You are more than what can be measured</title>
+<title>WOOOOO · You are more than what can be measured</title>
 <meta name="description" content="WOOOOO makes products that support you instead of constantly evaluating you. The first is an elegant bracelet with no electronics. It tracks nothing. Improve because you love yourself." />
-<meta property="og:title" content="WOOOOO — You are more than what can be measured" />
-<meta property="og:description" content="A bracelet that tracks nothing. The realest place on the internet. Improve because you love yourself — not because you think you're broken." />
+<meta property="og:title" content="WOOOOO · You are more than what can be measured" />
+<meta property="og:description" content="A bracelet that tracks nothing. The realest place on the internet. Improve because you love yourself, not because you think you're broken." />
+<meta property="og:image" content="assets/hero.jpg" />
 <meta property="og:type" content="website" />
 <meta name="theme-color" content="#0E0E10" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
   :root{
     --ink:#0E0E10; --ink-2:#141417; --ink-3:#1B1C1E;
     --paper:#F6F4EF; --mist:#A9A6B3; --mist-2:#76747F;
     --violet:#6E5AF0; --violet-soft:#9A8BF6; --warmth:#FF6B6B;
-    --cloud:#E9E6E0; --sage:#9BA890; --ocean:#46555F; --sand:#C8B69B; --obsidian:#1B1C1E;
     --line:rgba(255,255,255,0.08);
     --sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
-    --serif:'Fraunces',Georgia,serif;
+    --serif:'Newsreader',Georgia,serif;
     --max:1120px;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{
-    background:var(--ink);color:var(--paper);font-family:var(--sans);
-    line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
-    font-size:17px;letter-spacing:-0.01em;
-  }
+  body{background:var(--ink);color:var(--paper);font-family:var(--sans);line-height:1.6;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;font-size:17px;letter-spacing:-0.01em}
   a{color:inherit;text-decoration:none}
   ::selection{background:var(--violet);color:#fff}
   .wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
-  .serif{font-family:var(--serif);font-weight:400;letter-spacing:-0.02em}
+  svg.ic{width:28px;height:28px;display:block}
 
   /* NAV */
-  nav{position:fixed;top:0;left:0;right:0;z-index:50;
-    display:flex;align-items:center;justify-content:space-between;
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
     padding:20px 28px;backdrop-filter:blur(14px);
-    background:linear-gradient(to bottom,rgba(14,14,16,0.85),rgba(14,14,16,0));
-    transition:background .3s;}
+    background:linear-gradient(to bottom,rgba(14,14,16,0.85),rgba(14,14,16,0));transition:background .3s}
   .logo{font-weight:600;font-size:20px;letter-spacing:0.12em;display:flex;align-items:center;gap:10px}
   .logo .dot{width:8px;height:8px;border-radius:50%;background:var(--violet);
     box-shadow:0 0 14px 2px var(--violet);animation:pulse 3.2s ease-in-out infinite}
@@ -49,124 +44,116 @@
   .nav-links a:hover{color:var(--paper)}
   .btn{display:inline-flex;align-items:center;gap:8px;background:var(--paper);color:var(--ink);
     font-weight:500;font-size:14px;padding:11px 20px;border-radius:100px;border:none;cursor:pointer;
-    transition:transform .2s,box-shadow .3s;}
+    transition:transform .2s,box-shadow .3s;font-family:var(--sans)}
   .btn:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(246,244,239,0.15)}
   .btn.ghost{background:transparent;color:var(--paper);border:1px solid var(--line)}
   .btn.ghost:hover{border-color:rgba(255,255,255,0.3);box-shadow:none}
   @media(max-width:720px){.nav-links a:not(.btn){display:none}}
 
   /* HERO */
-  header{position:relative;min-height:100vh;display:flex;align-items:center;
-    padding:120px 0 60px;overflow:hidden}
-  .hero-glow{position:absolute;top:42%;left:50%;width:780px;height:780px;
-    transform:translate(-50%,-50%);border-radius:50%;
-    background:radial-gradient(circle,rgba(110,90,240,0.22),rgba(110,90,240,0) 62%);
+  header{position:relative;min-height:100vh;display:flex;align-items:center;padding:120px 0 60px;overflow:hidden}
+  .hero-glow{position:absolute;top:42%;left:50%;width:780px;height:780px;transform:translate(-50%,-50%);
+    border-radius:50%;background:radial-gradient(circle,rgba(110,90,240,0.22),rgba(110,90,240,0) 62%);
     filter:blur(20px);pointer-events:none;z-index:0;animation:breathe 7s ease-in-out infinite}
   @keyframes breathe{0%,100%{opacity:.7;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.08)}}
-  .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;
-    gap:40px;align-items:center}
+  .hero-floats{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+  .float2{position:absolute;white-space:nowrap;font-size:14px;color:var(--mist);opacity:0;
+    animation:floatMsg var(--dur,8s) ease-in-out forwards;will-change:transform,opacity}
+  .float2.v{color:var(--violet-soft)}
+  @keyframes floatMsg{0%{opacity:0;transform:translateY(26px)}16%{opacity:.5}80%{opacity:.44}100%{opacity:0;transform:translateY(-50px)}}
+  .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
   @media(max-width:880px){.hero-grid{grid-template-columns:1fr;text-align:center}}
   .eyebrow{font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:var(--violet-soft);
     margin-bottom:22px;font-weight:500}
-  h1{font-family:var(--serif);font-weight:400;font-size:clamp(40px,6vw,68px);
-    line-height:1.04;letter-spacing:-0.025em;margin-bottom:24px}
+  h1{font-family:var(--serif);font-weight:400;font-size:clamp(40px,6vw,70px);line-height:1.02;
+    letter-spacing:-0.015em;margin-bottom:24px;text-shadow:0 2px 30px rgba(14,14,16,0.95),0 0 12px rgba(14,14,16,0.9)}
   h1 em{font-style:italic;color:var(--violet-soft)}
-  .hero p.sub{font-size:19px;color:var(--mist);max-width:46ch;margin-bottom:34px}
+  .hero p.sub{font-size:19px;color:var(--mist);max-width:46ch;margin-bottom:34px;
+    text-shadow:0 2px 20px rgba(14,14,16,0.95)}
   @media(max-width:880px){.hero p.sub{margin-left:auto;margin-right:auto}}
   .hero-cta{display:flex;gap:14px;align-items:center}
-  @media(max-width:880px){.hero-cta{justify-content:center}}
+  @media(max-width:880px){.hero-cta{justify-content:center;flex-wrap:wrap}}
   .hero-cta .note{font-size:13px;color:var(--mist-2)}
   .bracelet-stage{position:relative;display:flex;justify-content:center;align-items:center}
-  .bracelet-stage svg{width:min(420px,86vw);height:auto;filter:drop-shadow(0 30px 60px rgba(0,0,0,0.6))}
-  .float{position:absolute;font-size:13px;color:var(--violet-soft);opacity:0;
-    animation:floatup 6s ease-in-out infinite;pointer-events:none;white-space:nowrap}
-  @keyframes floatup{0%{opacity:0;transform:translateY(20px)}15%{opacity:.9}85%{opacity:.9}100%{opacity:0;transform:translateY(-60px)}}
+  .hero-img{width:min(520px,94vw);height:auto;display:block;
+    filter:drop-shadow(0 30px 70px rgba(0,0,0,0.55));
+    -webkit-mask-image:radial-gradient(ellipse 66% 64% at 50% 49%,#000 30%,rgba(0,0,0,0.55) 60%,transparent 82%);
+    mask-image:radial-gradient(ellipse 66% 64% at 50% 49%,#000 30%,rgba(0,0,0,0.55) 60%,transparent 82%)}
 
   /* SECTIONS */
   section{position:relative;padding:110px 0}
   .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease}
   .reveal.in{opacity:1;transform:none}
-  .kicker{font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:var(--mist-2);
-    margin-bottom:20px;font-weight:500}
+  .kicker{font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:var(--mist-2);margin-bottom:20px;font-weight:500}
   h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,4.4vw,46px);line-height:1.1;
-    letter-spacing:-0.02em;margin-bottom:20px}
-  .lede{font-size:20px;color:var(--mist);max-width:60ch}
+    letter-spacing:-0.01em;margin-bottom:20px}
+  .lede{font-size:20px;color:var(--mist);max-width:62ch}
 
   /* BELIEF */
   .belief{text-align:center}
   .belief .manifesto{font-family:var(--serif);font-size:clamp(26px,3.6vw,40px);line-height:1.32;
-    max-width:18ch;margin:0 auto;letter-spacing:-0.02em}
+    max-width:20ch;margin:0 auto;letter-spacing:-0.01em}
   .belief .manifesto span{color:var(--violet-soft)}
   .belief .sig{margin-top:30px;font-size:15px;color:var(--mist-2);letter-spacing:0.04em}
 
   /* OBJECT */
-  .object-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:54px}
+  .showcase{margin-top:56px}
+  .showcase img{width:100%;height:auto;border-radius:22px;display:block}
+  .object-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:56px}
   @media(max-width:760px){.object-grid{grid-template-columns:1fr}}
   .card{background:linear-gradient(180deg,var(--ink-2),var(--ink));border:1px solid var(--line);
-    border-radius:18px;padding:30px 26px;transition:border-color .3s,transform .3s}
+    border-radius:18px;padding:30px 26px;transition:border-color .3s,transform .3s;text-align:left}
   .card:hover{border-color:rgba(255,255,255,0.16);transform:translateY(-4px)}
-  .card .ic{font-size:26px;margin-bottom:16px;display:block}
+  .card .ic{color:var(--violet-soft);margin-bottom:16px}
   .card h3{font-size:18px;font-weight:600;margin-bottom:8px;letter-spacing:-0.01em}
   .card p{font-size:15px;color:var(--mist);line-height:1.6}
-  .specs{display:flex;flex-wrap:wrap;gap:14px;margin-top:46px;justify-content:center}
-  .chip{border:1px solid var(--line);border-radius:100px;padding:10px 18px;font-size:14px;
-    color:var(--mist);display:flex;align-items:center;gap:8px}
+  .specs{display:flex;flex-wrap:wrap;gap:14px;margin-top:48px;justify-content:center}
+  .chip{border:1px solid var(--line);border-radius:100px;padding:10px 18px;font-size:14px;color:var(--mist);
+    display:flex;align-items:center;gap:8px}
   .chip b{color:var(--paper);font-weight:500}
-
-  /* COLORWAYS */
-  .colorways{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-top:48px}
-  .sw{text-align:center}
-  .sw .dotc{width:74px;height:74px;border-radius:50%;margin:0 auto 12px;
-    border:1px solid rgba(255,255,255,0.1);transition:transform .3s}
-  .sw:hover .dotc{transform:scale(1.08)}
-  .sw .nm{font-size:14px;font-weight:500}
-  .sw .hx{font-size:12px;color:var(--mist-2);font-family:monospace}
-
-  /* PRODUCT IMAGERY */
-  .bracelet-stage img.hero-img{width:min(500px,94vw);height:auto;display:block;
-    -webkit-mask-image:radial-gradient(ellipse 80% 74% at 50% 47%,#000 50%,transparent 90%);
-    mask-image:radial-gradient(ellipse 80% 74% at 50% 47%,#000 50%,transparent 90%)}
-  .showcase{margin-top:58px}
-  .showcase img{width:100%;height:auto;border-radius:22px;display:block}
-  .showcase figcaption{margin-top:14px;font-size:14px;color:var(--mist-2)}
   .bendrow{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-top:58px;text-align:left}
   @media(max-width:760px){.bendrow{grid-template-columns:1fr;text-align:center}}
   .bendrow img{width:100%;height:auto;border-radius:22px;display:block}
   .bendrow h3{font-family:var(--serif);font-weight:400;font-size:clamp(24px,3vw,32px);margin-bottom:14px}
   .bendrow p{font-size:16px;color:var(--mist)}
+
+  /* COLORWAYS */
   .lineup{margin-top:42px}
   .lineup img{width:100%;height:auto;border-radius:22px;display:block}
   .lineup .names{display:flex;gap:14px 26px;flex-wrap:wrap;justify-content:center;margin-top:22px}
-  .lineup .names span{font-size:14px;color:var(--mist)}
-  .lineup .names b{color:var(--paper);font-weight:500}
-  .lifestyle{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:48px}
-  @media(max-width:680px){.lifestyle{grid-template-columns:1fr}}
-  .lifestyle figure{margin:0;position:relative;border-radius:22px;overflow:hidden}
-  .lifestyle img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:4/5;transition:transform .7s}
-  .lifestyle figure:hover img{transform:scale(1.04)}
-  .lifestyle figcaption{position:absolute;left:20px;bottom:18px;font-size:15px;color:#fff;
-    text-shadow:0 1px 10px rgba(0,0,0,.55);font-weight:500;font-family:var(--serif)}
+  .lineup .names span{font-size:14px;color:var(--paper);font-weight:500}
 
-  /* APP / MOVEMENT */
+  /* PARODY DASHBOARD */
+  .dash{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:50px;text-align:left}
+  @media(max-width:760px){.dash{grid-template-columns:1fr 1fr}}
+  @media(max-width:480px){.dash{grid-template-columns:1fr}}
+  .metric{background:linear-gradient(180deg,var(--ink-2),var(--ink));border:1px solid var(--line);
+    border-radius:18px;padding:26px 24px;transition:border-color .3s,transform .3s}
+  .metric:hover{border-color:rgba(255,255,255,0.16);transform:translateY(-4px)}
+  .metric .ml{font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--mist-2);margin-bottom:12px}
+  .metric .mv{font-family:var(--serif);font-size:30px;line-height:1.12;margin-bottom:8px;color:var(--paper)}
+  .metric .mv.v{color:var(--violet-soft)}
+  .metric .ms{font-size:14px;color:var(--mist)}
+
+  /* MOVEMENT */
   .two{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:48px}
   @media(max-width:760px){.two{grid-template-columns:1fr}}
-  .room{background:linear-gradient(180deg,var(--ink-2),var(--ink));border:1px solid var(--line);
-    border-radius:22px;padding:38px 32px}
-  .room .tag{font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--violet-soft);
-    font-weight:500;margin-bottom:14px}
+  .room{background:linear-gradient(180deg,var(--ink-2),var(--ink));border:1px solid var(--line);border-radius:22px;padding:38px 32px}
+  .room .tag{font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--violet-soft);font-weight:500;margin-bottom:14px}
   .room h3{font-family:var(--serif);font-weight:400;font-size:26px;margin-bottom:14px}
   .room p{font-size:15px;color:var(--mist);margin-bottom:20px}
-  .moment{background:var(--ink-3);border:1px solid var(--line);border-radius:14px;
-    padding:16px 18px;font-size:15px;display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px}
-  .moment .w{color:var(--violet-soft);font-size:13px;white-space:nowrap;font-weight:500}
+  .moment{background:var(--ink-3);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-size:15px;
+    display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px}
+  .moment .w{color:var(--violet-soft);font-size:13px;white-space:nowrap;font-weight:500;display:flex;align-items:center;gap:5px}
+  .woo-dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--violet);
+    box-shadow:0 0 8px 1px var(--violet)}
   .moment .w.heart{color:var(--warmth)}
 
   /* PAIRING GAG */
   .pair-card{max-width:540px;margin:34px auto 0;background:linear-gradient(180deg,var(--ink-2),var(--ink));
     border:1px solid var(--line);border-radius:20px;padding:34px 28px;min-height:120px;
     display:flex;flex-direction:column;align-items:center;gap:18px}
-  .pair-log{width:100%;font-family:monospace;font-size:14px;text-align:left;color:var(--mist);
-    display:flex;flex-direction:column;gap:10px}
+  .pair-log{width:100%;font-family:monospace;font-size:14px;text-align:left;color:var(--mist);display:flex;flex-direction:column;gap:10px}
   .pair-log:empty{display:none}
   .pair-line{display:flex;align-items:center;gap:11px;opacity:0;transform:translateY(6px);animation:lineIn .4s forwards}
   @keyframes lineIn{to{opacity:1;transform:none}}
@@ -185,7 +172,7 @@
     padding:15px 22px;color:var(--paper);font-size:16px;font-family:var(--sans);outline:none;transition:border-color .25s}
   .form input:focus{border-color:var(--violet)}
   .form .btn{padding:15px 26px;white-space:nowrap}
-  .ok{margin-top:22px;color:var(--sage);font-size:15px;display:none}
+  .ok{margin-top:22px;color:#9BA890;font-size:15px;display:none}
   .ok.show{display:block;animation:floatup-soft .6s ease}
   @keyframes floatup-soft{from{opacity:0;transform:translateY(8px)}to{opacity:1}}
   .privacy{margin-top:16px;font-size:13px;color:var(--mist-2)}
@@ -204,6 +191,7 @@
   <div class="nav-links">
     <a href="#belief">The belief</a>
     <a href="#object">The bracelet</a>
+    <a href="#noscore">No score</a>
     <a href="#movement">The movement</a>
     <a href="#join" class="btn">Join the waitlist</a>
   </div>
@@ -211,21 +199,19 @@
 
 <header id="top">
   <div class="hero-glow"></div>
+  <div class="hero-floats" id="heroFloats" aria-hidden="true"></div>
   <div class="wrap hero-grid hero">
     <div>
       <div class="eyebrow">A different kind of company</div>
       <h1>You are more than<br>what can be <em>measured.</em></h1>
-      <p class="sub">The world scores your sleep, your steps, your worth. We make products that support you instead of evaluating you. The first is a bracelet with no electronics. It tracks nothing — on purpose.</p>
+      <p class="sub">The world scores your sleep, your steps, your worth. We make products that support you instead of evaluating you. The first is a bracelet with no electronics. It tracks nothing, on purpose.</p>
       <div class="hero-cta">
         <a href="#join" class="btn">Join the waitlist</a>
         <span class="note">No spam. Just a WOOOOO when we launch.</span>
       </div>
     </div>
     <div class="bracelet-stage">
-      <div class="float" style="top:8%;left:6%;animation-delay:0s">you've got this</div>
-      <div class="float" style="top:20%;right:2%;animation-delay:2.4s">＋ a WOOOOO</div>
-      <div class="float" style="bottom:12%;left:0;animation-delay:4.2s">glad you're here</div>
-      <img src="assets/hero.jpg" class="hero-img" alt="The WOOOOO bracelet in Obsidian — an open cuff with a single wave crest" fetchpriority="high" />
+      <img src="assets/hero.jpg" class="hero-img" alt="The WOOOOO bracelet in Obsidian, an open cuff with a single wave crest" fetchpriority="high" />
     </div>
   </div>
 </header>
@@ -242,12 +228,21 @@
   <div class="wrap reveal" style="text-align:center">
     <div class="kicker">The bracelet</div>
     <h2>One sculptural object.<br>Zero electronics.</h2>
-    <p class="lede" style="margin:0 auto">It was born from three images — a curling leaf, a cresting wave, an arm around a shoulder. We kept the wave. It's comfortable enough that you'll forget you're wearing it, which is exactly the point.</p>
-    <figure class="showcase"><img src="assets/macro.jpg" alt="Macro of the soft-touch matte crest and the debossed wooooo mark" loading="lazy" /><figcaption>Soft-touch matte. A quiet wooooo debossed inside — discovered, never advertised.</figcaption></figure>
+    <p class="lede" style="margin:0 auto">It was born from three images. A curling leaf. A cresting wave. An arm around a shoulder. We kept the wave. It's comfortable enough that you'll forget you're wearing it, which is exactly the point.</p>
+    <figure class="showcase"><img src="assets/macro.jpg" alt="Macro of the soft-touch matte crest and the debossed wooooo mark" loading="lazy" /></figure>
     <div class="object-grid">
-      <div class="card"><span class="ic">🍃</span><h3>The Leaf</h3><p>Curl inward to protect what's real about you.</p></div>
-      <div class="card"><span class="ic">🌊</span><h3>The Wave</h3><p>Encouragement, caught in the moment just before it breaks.</p></div>
-      <div class="card"><span class="ic">🫂</span><h3>The Embrace</h3><p>An arm around your shoulder. Quiet. Always there.</p></div>
+      <div class="card">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c0-9 7-16 16-16 0 9-7 16-16 16Z"/><path d="M4.5 19.5C8 14 13 10 18 8"/></svg>
+        <h3>The Leaf</h3><p>Curl inward to protect what's real about you.</p>
+      </div>
+      <div class="card">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14c2.2 0 3.3-1.8 5.5-1.8S11.8 15 15 15s3.5-3 6-3"/><path d="M3 18c2.2 0 3.3-1.8 5.5-1.8S11.8 19 15 19"/></svg>
+        <h3>The Wave</h3><p>Encouragement, caught in the moment just before it breaks.</p>
+      </div>
+      <div class="card">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7c0 7 4 11 8 13 4-2 8-6 8-13"/><path d="M4 7c1.6-1.7 3.6-1.7 5.2 0"/><path d="M19.9 7c-1.6-1.7-3.6-1.7-5.2 0"/></svg>
+        <h3>The Embrace</h3><p>An arm around your shoulder. Quiet. Always there.</p>
+      </div>
     </div>
     <div class="specs">
       <span class="chip"><b>No sensors.</b> Tracks nothing.</span>
@@ -259,7 +254,7 @@
       <img src="assets/bends.jpg" alt="The cuff gently flexed open to show it bends to fit" loading="lazy" />
       <div>
         <h3>One size. You bend it to fit.</h3>
-        <p>No clasps, no sizing charts, no returns. A soft flexible core lets you open it to your wrist and it holds — you fit it once, then forget it. Light enough to wear in the shower, the gym, to sleep.</p>
+        <p>No clasps, no sizing charts, no returns. A soft flexible core lets you open it to your wrist and it holds. You fit it once, then forget it. Light enough to wear in the shower, the gym, to sleep.</p>
       </div>
     </div>
   </div>
@@ -271,20 +266,23 @@
     <h2 class="serif" style="font-size:clamp(24px,3vw,34px)">Five quiet tones</h2>
     <div class="lineup">
       <img src="assets/lineup.jpg" alt="The WOOOOO bracelet in five colourways: Obsidian, Cloud, Sage, Ocean, Sand" loading="lazy" />
-      <div class="names">
-        <span><b>Obsidian</b></span><span><b>Cloud</b></span><span><b>Sage</b></span><span><b>Ocean</b></span><span><b>Sand</b></span>
-      </div>
+      <div class="names"><span>Obsidian</span><span>Cloud</span><span>Sage</span><span>Ocean</span><span>Sand</span></div>
     </div>
   </div>
 </section>
 
-<section id="worn" style="padding-top:0">
+<section id="noscore">
   <div class="wrap reveal" style="text-align:center">
-    <div class="kicker">Worn by</div>
-    <h2>People who'd rather feel lighter<br>than be scored.</h2>
-    <div class="lifestyle">
-      <figure><img src="assets/wrist-obsidian.jpg" alt="A young woman wearing the Obsidian WOOOOO bracelet at golden hour" loading="lazy" /><figcaption>Obsidian</figcaption></figure>
-      <figure><img src="assets/wrist-sage.jpg" alt="A young man wearing the Sage WOOOOO bracelet" loading="lazy" /><figcaption>Sage</figcaption></figure>
+    <div class="kicker">No score. No streaks. No shame.</div>
+    <h2>The only dashboard that<br>refuses to rate you.</h2>
+    <p class="lede" style="margin:0 auto">Everything else you wear has an opinion about you this morning. This one doesn't. Here is your full report.</p>
+    <div class="dash">
+      <div class="metric"><div class="ml">Battery life</div><div class="mv v">Forever</div><div class="ms">There is nothing to charge. It's a bracelet.</div></div>
+      <div class="metric"><div class="ml">Today's recovery</div><div class="mv">100%</div><div class="ms">You woke up. That is the entire score.</div></div>
+      <div class="metric"><div class="ml">Your WOOOOO age</div><div class="mv">Exactly yours</div><div class="ms">You are right on time. You always were.</div></div>
+      <div class="metric"><div class="ml">Steps today</div><div class="mv">Uncounted</div><div class="ms">You went somewhere. That is plenty.</div></div>
+      <div class="metric"><div class="ml">Readiness</div><div class="mv v">Ready enough</div><div class="ms">For whatever today is. We believe you.</div></div>
+      <div class="metric"><div class="ml">Sleep score</div><div class="mv">You slept</div><div class="ms">Gold star. No notes. No graphs.</div></div>
     </div>
   </div>
 </section>
@@ -298,15 +296,15 @@
       <div class="room" style="text-align:left">
         <div class="tag">WOOOOO Together · for everyone</div>
         <h3>Send a stranger a WOOOOO.</h3>
-        <p>Share a moment — a win, a struggle, a goodbye. No comments, no advice. Just thousands of tiny lights from people quietly rooting for you.</p>
-        <div class="moment"><span>I finally got the job.</span><span class="w">🟣 2,341</span></div>
-        <div class="moment"><span>Brushed my teeth after weeks.</span><span class="w">🟣 18,402</span></div>
-        <div class="moment"><span>Said goodbye to someone I love.</span><span class="w heart">❤️ 35,201</span></div>
+        <p>Share a moment. A win, a struggle, a goodbye. No comments, no advice. Just thousands of tiny lights from people quietly rooting for you.</p>
+        <div class="moment"><span>I finally got the job.</span><span class="w"><span class="woo-dot"></span>2,341</span></div>
+        <div class="moment"><span>Brushed my teeth after weeks.</span><span class="w"><span class="woo-dot"></span>18,402</span></div>
+        <div class="moment"><span>Said goodbye to someone I love.</span><span class="w heart"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.35-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.65-7 10-7 10Z"/></svg>35,201</span></div>
       </div>
       <div class="room" style="text-align:left">
         <div class="tag">WOOOOO Companion · with the bracelet</div>
         <h3>The one app on your side.</h3>
-        <p>No sensors. No fake data — ever. It has no idea whether the bracelet is on your wrist, and it'll cheerfully pretend to connect to it anyway. Mostly it just remembers your story and hands it back when you need it.</p>
+        <p>No sensors. No fake data, ever. It has no idea whether the bracelet is on your wrist, and it will cheerfully pretend to connect to it anyway. Mostly it just remembers your story and hands it back when you need it.</p>
         <div class="moment"><span>“Eight months ago you almost didn't start.”</span><span class="w">memory</span></div>
         <div class="moment"><span>“Connecting to your WOOOOO… oh, it didn't need to.”</span><span class="w">the joke</span></div>
         <div class="moment"><span>Need a WOOOOO?</span><span class="w">one tap</span></div>
@@ -323,7 +321,7 @@
     <div class="pair-card">
       <button class="btn" id="pairBtn">Connect my WOOOOO</button>
       <div class="pair-log" id="pairLog" aria-live="polite"></div>
-      <button class="btn ghost" id="pairAgain" style="display:none">Run it again 🙂</button>
+      <button class="btn ghost" id="pairAgain" style="display:none">Run it again</button>
     </div>
   </div>
 </section>
@@ -335,10 +333,10 @@
     <p class="lede" style="margin:0 auto 6px">We'll send one WOOOOO the day it launches. Nothing else.</p>
     <form class="form" id="waitform" novalidate>
       <input type="email" id="email" placeholder="your@email.com" autocomplete="email" required aria-label="Email address" />
-      <button type="submit" class="btn">Send me a WOOOOO →</button>
+      <button type="submit" class="btn">Send me a WOOOOO</button>
     </form>
-    <div class="ok" id="ok">🟣 You're on the list. Glad you're here.</div>
-    <p class="privacy">We will never sell your data. You are more than a data point — we mean it.</p>
+    <div class="ok" id="ok">You're on the list. Glad you're here.</div>
+    <p class="privacy">We will never sell your data. You are more than a data point, and we mean it.</p>
   </div>
 </section>
 
@@ -348,6 +346,7 @@
     <div class="links">
       <a href="#belief">The belief</a>
       <a href="#object">The bracelet</a>
+      <a href="#noscore">No score</a>
       <a href="#movement">The movement</a>
       <a href="#join">Waitlist</a>
     </div>
@@ -363,7 +362,37 @@
   // Nav bg on scroll
   const nav=document.getElementById('nav');
   addEventListener('scroll',()=>{nav.style.background=scrollY>40?'rgba(14,14,16,0.92)':'';});
-  // The pairing gag — a joke that means something
+
+  // Floating hero messages: a continuous ambient field of warmth and jokes
+  const MSGS=[
+    "you've got this","glad you're here","you're doing better than you think","keep going",
+    "proud of you","you made it to today","rooting for you","you are enough","small steps count",
+    "breathe, you're okay","you matter","this feeling passes","you're allowed to rest",
+    "still here, still trying","that took courage","one day at a time","you're not behind",
+    "be gentle with you","you showed up","almost, and that counts","send a wooooo","+ a wooooo",
+    "battery: still full","0 steps counted, 0 judgments made","recovery today: you woke up, nice",
+    "WOOOOO age: exactly yours","no notifications, on purpose","sleep score: you slept, gold star",
+    "readiness: ready enough","streak broken, and that's fine","calories: none of our business",
+    "syncing nothing, as promised","stress level: classified","today's rating: unrateable",
+    "charging: never needed","steps to greatness: unmeasured"
+  ];
+  const layer=document.getElementById('heroFloats');
+  function spawnFloat(){
+    if(!layer) return;
+    const el=document.createElement('div');
+    el.className='float2'+(Math.random()<0.5?' v':'');
+    el.textContent=MSGS[Math.floor(Math.random()*MSGS.length)];
+    el.style.left=(5+Math.random()*84)+'%';
+    el.style.top=(7+Math.random()*82)+'%';
+    el.style.setProperty('--dur',(6.5+Math.random()*3.2).toFixed(1)+'s');
+    el.style.fontSize=(12+Math.floor(Math.random()*4))+'px';
+    layer.appendChild(el);
+    el.addEventListener('animationend',()=>el.remove());
+  }
+  for(let i=0;i<9;i++) setTimeout(spawnFloat,i*260);
+  setInterval(spawnFloat,620);
+
+  // The pairing gag
   const sleep=ms=>new Promise(r=>setTimeout(r,ms));
   const pairBtn=document.getElementById('pairBtn'),pairAgain=document.getElementById('pairAgain'),pairLog=document.getElementById('pairLog');
   const steps=[
@@ -377,7 +406,7 @@
     {t:'It’s a bracelet. We got a little excited.',warm:1,hold:1500},
     {t:'You don’t need a chip to be worth something.',big:1,hold:1500},
     {t:'Neither does it.',big:1,hold:1700},
-    {t:'✓ Paired. You always were. 🟣',big:1,done:1,hold:0}
+    {t:'Paired. You always were.',big:1,done:1,hold:0}
   ];
   async function runPair(){
     pairBtn.style.display='none';pairAgain.style.display='none';pairLog.innerHTML='';
@@ -387,6 +416,7 @@
       const line=document.createElement('div');
       line.className='pair-line'+(s.warm?' warm':'')+(s.big?' big':'');
       if(s.spin){line.dataset.spin='1';const sp=document.createElement('span');sp.className='sp';const tx=document.createElement('span');tx.textContent=s.t;line.append(sp,tx);}
+      else if(s.done){const c=document.createElement('span');c.className='ck';c.textContent='✓';const tx=document.createElement('span');tx.textContent=s.t;line.append(c,tx);}
       else{line.textContent=s.t;}
       pairLog.appendChild(line);prev=line;
       await sleep(s.hold);
@@ -396,7 +426,7 @@
   pairBtn.addEventListener('click',runPair);
   pairAgain.addEventListener('click',runPair);
 
-  // Waitlist — posts to FormSubmit (free, no account). First real signup triggers a
+  // Waitlist: posts to FormSubmit (free, no account). First real signup triggers a
   // one-time activation email to the alias below; click it once and capture goes live.
   const WAITLIST_ENDPOINT='https://formsubmit.co/ajax/saif.fhegazy+woooowaitlist@gmail.com';
   const form=document.getElementById('waitform'),ok=document.getElementById('ok'),email=document.getElementById('email');
@@ -409,7 +439,7 @@
     try{
       await fetch(WAITLIST_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
         body:JSON.stringify({email:v,_subject:'New WOOOOO waitlist signup',_template:'table',_captcha:'false'})});
-    }catch(_){ /* local copy already stored; never block the warm moment */ }
+    }catch(_){}
   });
 </script>
 </body>
