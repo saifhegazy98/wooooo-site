@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="WOOOOO app icon">
+  <defs>
+    <radialGradient id="bg" cx="0.3" cy="0.2" r="1">
+      <stop offset="0" stop-color="#26234a"/>
+      <stop offset="1" stop-color="#0E0E10"/>
+    </radialGradient>
+  </defs>
+  <rect width="100" height="100" rx="24" fill="url(#bg)"/>
+  <g transform="translate(24,24) scale(0.52)" fill="#9A8BF6">
+    <path d="M36 82 C22 74 12 64 12 50 C12 34 18 22 30 15 C40 9 46 7 52 7 C60 7 68 11 76 20 C84 30 88 40 88 50 C88 62 78 72 64 82 C61.5 78.5 60.5 76 60.5 73.5 C72 64 74 50 72 41 C70 31 62 26 52 25.5 C42 26 34 31 32 41 C30 52 33 65 40 73.5 C40 76.5 38.5 79 36 82 Z"/>
+  </g>
+</svg>
