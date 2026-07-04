@@ -123,6 +123,16 @@
   .lineup .names{display:flex;gap:14px 26px;flex-wrap:wrap;justify-content:center;margin-top:22px}
   .lineup .names span{font-size:14px;color:var(--paper);font-weight:500}
 
+  /* MOMENTS WALL */
+  .wall-grid{columns:3;column-gap:16px;margin-top:44px}
+  @media(max-width:760px){.wall-grid{columns:2}}
+  @media(max-width:520px){.wall-grid{columns:1}}
+  .wall .m{break-inside:avoid;background:linear-gradient(180deg,var(--ink-2),var(--ink));
+    border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:16px}
+  .wall .m p{font-size:16px;color:var(--paper);margin-bottom:12px;line-height:1.4}
+  .wall .m .w{font-size:13px;font-weight:500;color:var(--violet-soft);display:flex;align-items:center;gap:6px}
+  .wall .m .w.heart{color:var(--warmth)}
+
   /* PARODY DASHBOARD */
   .dash{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:50px;text-align:left}
   @media(max-width:760px){.dash{grid-template-columns:1fr 1fr}}
@@ -287,6 +297,26 @@
   </div>
 </section>
 
+<section id="wall" class="wall">
+  <div class="wrap reveal" style="text-align:center">
+    <div class="kicker">The realest place</div>
+    <h2>A wall of tiny lights.</h2>
+    <p class="lede" style="margin:0 auto">Real moments from real people. No names, no advice, no comparison. Only strangers quietly rooting for you.</p>
+    <div class="wall-grid" style="text-align:left">
+      <div class="m"><p>I finally asked for help.</p><span class="w"><span class="woo-dot"></span>4,120</span></div>
+      <div class="m"><p>Six months sober today.</p><span class="w"><span class="woo-dot"></span>22,908</span></div>
+      <div class="m"><p>I left the house. That was the whole day, and it counts.</p><span class="w"><span class="woo-dot"></span>9,340</span></div>
+      <div class="m"><p>Told them how I actually feel.</p><span class="w"><span class="woo-dot"></span>3,102</span></div>
+      <div class="m"><p>My plant is still alive. So am I.</p><span class="w"><span class="woo-dot"></span>1,845</span></div>
+      <div class="m"><p>First real night's sleep in a while.</p><span class="w"><span class="woo-dot"></span>5,660</span></div>
+      <div class="m"><p>I'm still here.</p><span class="w heart"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.35-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.65-7 10-7 10Z"/></svg>58,140</span></div>
+      <div class="m"><p>Got out of bed on the hard day.</p><span class="w"><span class="woo-dot"></span>12,777</span></div>
+      <div class="m"><p>Started over. Again.</p><span class="w"><span class="woo-dot"></span>7,010</span></div>
+      <div class="m"><p>Made a stranger laugh today.</p><span class="w"><span class="woo-dot"></span>3,890</span></div>
+    </div>
+  </div>
+</section>
+
 <section id="movement">
   <div class="wrap reveal" style="text-align:center">
     <div class="kicker">The movement</div>
@@ -295,7 +325,7 @@
     <div class="two">
       <div class="room" style="text-align:left">
         <div class="tag">WOOOOO Together · for everyone</div>
-        <h3>Send a stranger a WOOOOO.</h3>
+        <h3>Share your WOOOOO.</h3>
         <p>Share a moment. A win, a struggle, a goodbye. No comments, no advice. Just thousands of tiny lights from people quietly rooting for you.</p>
         <div class="moment"><span>I finally got the job.</span><span class="w"><span class="woo-dot"></span>2,341</span></div>
         <div class="moment"><span>Brushed my teeth after weeks.</span><span class="w"><span class="woo-dot"></span>18,402</span></div>
@@ -306,7 +336,7 @@
         <h3>The one app on your side.</h3>
         <p>No sensors. No fake data, ever. It has no idea whether the bracelet is on your wrist, and it will cheerfully pretend to connect to it anyway. Mostly it just remembers your story and hands it back when you need it.</p>
         <div class="moment"><span>“Eight months ago you almost didn't start.”</span><span class="w">memory</span></div>
-        <div class="moment"><span>“Connecting to your WOOOOO… oh, it didn't need to.”</span><span class="w">the joke</span></div>
+        <div class="moment"><span>“You don't need your WOOOOO to know you're enough.”</span><span class="w">warmth</span></div>
         <div class="moment"><span>Need a WOOOOO?</span><span class="w">one tap</span></div>
       </div>
     </div>
