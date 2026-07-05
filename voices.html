@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WOOOOO — Founding Voices</title>
+<meta name="description" content="Before WOOOOO opens, share a real moment so the first person who arrives doesn't feel alone. Anonymous, always." />
+<meta name="theme-color" content="#0E0E10" />
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{--ink:#0E0E10;--ink-2:#161619;--paper:#F6F4EF;--violet:#6E5AF0;--violet-soft:#9A8BF6;--warmth:#FF6B6B;--sage:#9BA890;--mist:#A9A6B3;--mist-2:#76747F;--line:rgba(255,255,255,.09);--sans:'Inter',sans-serif;--serif:'Newsreader',Georgia,serif}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--ink);color:var(--paper);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;font-size:17px;letter-spacing:-0.01em;min-height:100vh}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--violet);color:#fff}
+  .wrap{max-width:640px;margin:0 auto;padding:0 24px}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:22px 24px;max-width:1120px;margin:0 auto}
+  .logo{font-weight:600;font-size:20px;letter-spacing:.12em;display:flex;align-items:center;gap:10px}
+  .logo .mk{width:22px;height:22px;fill:var(--violet);filter:drop-shadow(0 0 9px rgba(110,90,240,.55))}
+  .back{font-size:14px;color:var(--mist)}
+  .back:hover{color:var(--paper)}
+  main{padding:56px 0 90px;position:relative}
+  .glow{position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:560px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(110,90,240,.18),transparent 62%);filter:blur(20px);pointer-events:none;z-index:0}
+  .inner{position:relative;z-index:1}
+  .kicker{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--violet-soft);font-weight:500;margin-bottom:18px}
+  h1{font-family:var(--serif);font-weight:400;font-size:clamp(34px,6vw,52px);line-height:1.05;letter-spacing:-0.02em;margin-bottom:20px}
+  .lede{font-size:19px;color:var(--mist);margin-bottom:36px;max-width:52ch}
+  form{background:var(--ink-2);border:1px solid var(--line);border-radius:22px;padding:26px}
+  label.q{display:block;font-size:14px;color:var(--mist);margin-bottom:12px}
+  textarea{width:100%;background:var(--ink);border:1px solid var(--line);border-radius:14px;padding:16px 18px;color:var(--paper);font-family:var(--serif);font-size:20px;line-height:1.45;min-height:120px;resize:vertical;outline:none;transition:border-color .25s}
+  textarea::placeholder{color:var(--mist-2);font-style:italic}
+  textarea:focus{border-color:var(--violet)}
+  .reg-label{font-size:13px;color:var(--mist-2);margin:22px 0 12px}
+  .chips{display:flex;flex-wrap:wrap;gap:9px}
+  .chip{border:1px solid var(--line);border-radius:100px;padding:9px 15px;font-size:14px;color:var(--mist);cursor:pointer;transition:all .2s;user-select:none}
+  .chip:hover{border-color:rgba(255,255,255,.28);color:var(--paper)}
+  .chip.on{background:rgba(110,90,240,.14);border-color:var(--violet);color:var(--violet-soft)}
+  .actions{display:flex;align-items:center;gap:16px;margin-top:26px;flex-wrap:wrap}
+  .btn{background:var(--paper);color:var(--ink);border:none;border-radius:100px;padding:14px 26px;font-family:var(--sans);font-weight:600;font-size:15px;cursor:pointer;transition:transform .2s,box-shadow .3s}
+  .btn:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(246,244,239,.15)}
+  .anon{font-size:13px;color:var(--mist-2);display:flex;align-items:center;gap:7px}
+  .ok{display:none;text-align:center;padding:20px 0}
+  .ok.show{display:block;animation:fade .6s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1}}
+  .ok .big{font-family:var(--serif);font-size:26px;color:var(--violet-soft);margin-bottom:10px}
+  .ok .lights{display:flex;justify-content:center;gap:6px;margin:16px 0}
+  .ok .lights i{width:7px;height:7px;border-radius:50%;background:var(--violet-soft);opacity:.8}
+  .ok a{color:var(--violet-soft);border-bottom:1px solid rgba(154,139,246,.4)}
+  .fine{font-size:13px;color:var(--mist-2);margin-top:22px;line-height:1.6}
+  footer{border-top:1px solid var(--line);padding:34px 0;text-align:center;color:var(--mist-2);font-size:13px;margin-top:40px}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo"><svg class="mk" viewBox="0 0 100 100" aria-hidden="true"><path d="M36 82 C22 74 12 64 12 50 C12 34 18 22 30 15 C40 9 46 7 52 7 C60 7 68 11 76 20 C84 30 88 40 88 50 C88 62 78 72 64 82 C61.5 78.5 60.5 76 60.5 73.5 C72 64 74 50 72 41 C70 31 62 26 52 25.5 C42 26 34 31 32 41 C30 52 33 65 40 73.5 C40 76.5 38.5 79 36 82 Z"/></svg>WOOOOO</a>
+  <a href="/" class="back">← Home</a>
+</nav>
+
+<main>
+  <div class="glow"></div>
+  <div class="wrap inner">
+    <div class="kicker">Founding Voices</div>
+    <h1>Be one of the<br>first lights.</h1>
+    <p class="lede">WOOOOO is almost here. Before it opens, share a real moment, so the very first person who walks in doesn't find an empty room. Anonymous, always. Yours might be the thing that makes a stranger feel less alone.</p>
+
+    <form id="voiceForm" novalidate>
+      <label class="q" for="moment">Share a moment. A win, a hard thing, a goodbye, a small brave thing.</label>
+      <textarea id="moment" name="moment" placeholder="I finally… / Today I… / I'm proud that… / I said goodbye to…" maxlength="240" required></textarea>
+
+      <div class="reg-label">This is me…</div>
+      <div class="chips" id="chips">
+        <span class="chip" data-r="celebrating">celebrating</span>
+        <span class="chip" data-r="proud / brave">being brave</span>
+        <span class="chip" data-r="grateful">grateful</span>
+        <span class="chip" data-r="struggling">struggling</span>
+        <span class="chip" data-r="grieving">grieving</span>
+        <span class="chip" data-r="just sharing">just sharing</span>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="btn">Add my moment</button>
+        <span class="anon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Anonymous. No name, no account.</span>
+      </div>
+    </form>
+
+    <div class="ok" id="ok">
+      <div class="big">Thank you for the light.</div>
+      <div class="lights"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <p style="color:var(--mist)">It'll be waiting for someone who needs it. That's the whole idea.</p>
+      <p style="margin-top:16px"><a href="#" id="again">Share another</a> · <a href="/">Back home</a></p>
+    </div>
+
+    <p class="fine">Moments are anonymous and may appear (lightly edited for clarity) in WOOOOO to encourage a stranger. Never your name, never anything that identifies you. Please don't include personal details.</p>
+  </div>
+</main>
+
+<footer>People are more than what can be measured. · <a href="/" style="color:var(--mist)">wooooo.me</a></footer>
+
+<script>
+  const ENDPOINT='https://formsubmit.co/ajax/saif.fhegazy+woooovoices@gmail.com';
+  const chips=document.getElementById('chips');let register='';
+  chips.addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;
+    chips.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));c.classList.add('on');register=c.dataset.r;});
+  const form=document.getElementById('voiceForm'),ok=document.getElementById('ok'),ta=document.getElementById('moment');
+  form.addEventListener('submit',async e=>{
+    e.preventDefault();
+    const v=(ta.value||'').trim();
+    if(v.length<3){ta.focus();ta.style.borderColor='#FF6B6B';return;}
+    try{const list=JSON.parse(localStorage.getItem('wooooo_voices')||'[]');list.push({m:v,r:register,t:Date.now()});localStorage.setItem('wooooo_voices',JSON.stringify(list));}catch(_){}
+    form.style.display='none';ok.classList.add('show');
+    try{await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
+      body:JSON.stringify({moment:v,register:register||'unspecified',_subject:'New Founding Voice',_template:'table',_captcha:'false'})});}catch(_){}
+  });
+  document.getElementById('again').addEventListener('click',e=>{e.preventDefault();ta.value='';register='';chips.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));ok.classList.remove('show');form.style.display='';ta.focus();});
+</script>
+</body>
+</html>
