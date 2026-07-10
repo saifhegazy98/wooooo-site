@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>WOOOOO · Review</title>
+<meta name="theme-color" content="#0E0E10" />
+<meta name="robots" content="noindex,nofollow" />
+<link rel="manifest" href="/admin/manifest.webmanifest" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{--ink:#0E0E10;--ink2:#141417;--paper:#F6F4EF;--mist:#A9A6B3;--mist2:#76747F;
+    --violet:#6E5AF0;--violet-soft:#9A8BF6;--warmth:#FF6B6B;--line:rgba(255,255,255,0.09);
+    --sans:'Inter',-apple-system,sans-serif;--serif:'Newsreader',Georgia,serif;}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--ink);color:var(--paper);font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;padding:env(safe-area-inset-top) 0 40px}
+  .wrap{max-width:640px;margin:0 auto;padding:22px 18px}
+  header{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+  h1{font-family:var(--serif);font-size:26px;font-weight:500}
+  .sub{color:var(--mist2);font-size:13px;margin-bottom:20px}
+  button{font-family:var(--sans);cursor:pointer;border:none}
+  .bar{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+  .btn{background:var(--ink2);border:1px solid var(--line);color:var(--paper);
+    border-radius:100px;padding:9px 16px;font-size:13.5px;font-weight:500}
+  .btn.on{border-color:var(--violet);background:rgba(110,90,240,.12);color:var(--violet-soft)}
+  .card{background:var(--ink2);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:12px}
+  .txt{font-family:var(--serif);font-size:18px;line-height:1.4;margin-bottom:12px;white-space:pre-wrap;word-break:break-word}
+  .meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+  .tag{font-size:11px;color:var(--mist2);background:var(--ink);border:1px solid var(--line);border-radius:100px;padding:3px 9px}
+  .tag.warn{color:var(--violet-soft);border-color:rgba(110,90,240,.35)}
+  .acts{display:flex;gap:10px}
+  .keep{background:var(--paper);color:var(--ink);border-radius:100px;padding:10px 20px;font-weight:600;font-size:14px;flex:1}
+  .remove{background:transparent;border:1px solid rgba(255,107,107,.5);color:var(--warmth);border-radius:100px;padding:10px 20px;font-weight:600;font-size:14px;flex:1}
+  .empty{text-align:center;color:var(--mist);padding:60px 20px;font-family:var(--serif);font-size:20px}
+  .gate{max-width:360px;margin:12vh auto 0;text-align:center;padding:0 20px}
+  .gate input{width:100%;background:var(--ink2);border:1px solid var(--line);color:var(--paper);
+    border-radius:12px;padding:14px;font-size:15px;margin:18px 0 12px;font-family:var(--sans)}
+  .gate .btn{width:100%;justify-content:center;background:var(--paper);color:var(--ink);font-weight:600;padding:13px}
+  .toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);background:var(--ink2);
+    border:1px solid var(--line);color:var(--paper);padding:11px 18px;border-radius:100px;font-size:13.5px;opacity:0;transition:opacity .2s}
+  .toast.show{opacity:1}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<div class="toast" id="toast"></div>
+<script>
+const FN = "https://gboaaflkspsbovgyazsa.supabase.co/functions/v1/admin";
+const VAPID = "BF5U9_vh6NMOgtXOI9nWkO-8EV08lxZib8ccsM4Q-HH5e4uYouw60uET6vB6_aheUjz8JKe9l-CP1r7AP8kpVyE";
+const app = document.getElementById('app');
+let token = localStorage.getItem('wooooo_admin_token') || '';
+
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);}
+
+async function api(action, extra){
+  const r = await fetch(FN, {method:'POST',headers:{'Content-Type':'application/json','x-admin-token':token},
+    body: JSON.stringify(Object.assign({action}, extra||{}))});
+  if(r.status===401){ localStorage.removeItem('wooooo_admin_token'); token=''; renderGate('That key didn’t work.'); throw new Error('401'); }
+  return r.json();
+}
+
+function urlB64(b64){const pad='='.repeat((4-b64.length%4)%4);const s=(b64+pad).replace(/-/g,'+').replace(/_/g,'/');
+  const raw=atob(s);return Uint8Array.from([...raw].map(c=>c.charCodeAt(0)));}
+
+async function enableAlerts(){
+  try{
+    if(!('serviceWorker' in navigator) || !('PushManager' in window)){ toast('This browser can’t do push. Add to Home Screen first (iOS).'); return; }
+    const perm = await Notification.requestPermission();
+    if(perm!=='granted'){ toast('Notifications not allowed.'); return; }
+    const reg = await navigator.serviceWorker.register('/admin/sw.js',{scope:'/admin/'});
+    await navigator.serviceWorker.ready;
+    let sub = await reg.pushManager.getSubscription();
+    if(!sub){ sub = await reg.pushManager.subscribe({userVisibleOnly:true, applicationServerKey:urlB64(VAPID)}); }
+    await api('subscribe', {sub: sub.toJSON()});
+    localStorage.setItem('wooooo_alerts','1');
+    toast('Alerts on. Sending a test…');
+    await api('testpush');
+    render();
+  }catch(e){ toast('Couldn’t enable alerts.'); }
+}
+
+function renderGate(msg){
+  app.innerHTML = `<div class="gate"><h1>WOOOOO · Review</h1>
+    <p class="sub" style="margin-top:8px">${msg||'Enter your admin key.'}</p>
+    <input id="tk" type="password" placeholder="admin key" autocomplete="off" />
+    <button class="btn" onclick="saveKey()">Unlock</button></div>`;
+}
+window.saveKey=function(){const v=document.getElementById('tk').value.trim();if(!v)return;
+  token=v;localStorage.setItem('wooooo_admin_token',v);render();}
+
+async function act(id, action){
+  try{ await api(action,{moment:id}); document.getElementById('c_'+id)?.remove();
+    toast(action==='keep'?'Kept.':'Removed.');
+    if(!document.querySelector('.card')) render();
+  }catch(e){}
+}
+window.act=act;
+
+async function render(){
+  if(!token){ renderGate(); return; }
+  app.innerHTML = `<header><h1>Review</h1></header><p class="sub">Loading…</p>`;
+  let data; try{ data = await api('list'); }catch(e){ return; }
+  const alertsOn = localStorage.getItem('wooooo_alerts')==='1' && Notification.permission==='granted';
+  const items = data.items||[];
+  const cards = items.map(m=>{
+    const t = new Date(m.created_at).toLocaleString();
+    const badge = m.reviewed_ok ? '<span class="tag warn">AI-cleared before</span>' : '';
+    return `<div class="card" id="c_${m.id}">
+      <div class="txt">${(m.text||'').replace(/</g,'&lt;')}</div>
+      <div class="meta"><span class="tag">${m.room}</span><span class="tag">${m.reports||0} report${m.reports===1?'':'s'}</span>${badge}<span class="tag">${t}</span></div>
+      <div class="acts"><button class="keep" onclick="act('${m.id}','keep')">Keep</button>
+        <button class="remove" onclick="act('${m.id}','remove')">Remove</button></div></div>`;
+  }).join('');
+  app.innerHTML = `<header><h1>Review</h1>
+      <button class="btn ${alertsOn?'on':''}" onclick="enableAlerts()">${alertsOn?'✓ Alerts on':'Enable alerts'}</button>
+    </header>
+    <p class="sub">Moments held for a human. ${items.length} waiting.</p>
+    <div class="bar"><button class="btn" onclick="render()">Refresh</button></div>
+    ${items.length? cards : '<div class="empty">Nothing waiting. All quiet. 💜</div>'}`;
+}
+window.enableAlerts=enableAlerts;
+render();
+setInterval(()=>{ if(token && document.visibilityState==='visible') render(); }, 60000);
+</script>
+</body>
+</html>
