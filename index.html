@@ -62,6 +62,7 @@
     filter:blur(20px);pointer-events:none;z-index:0;animation:breathe 7s ease-in-out infinite}
   @keyframes breathe{0%,100%{opacity:.7;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.08)}}
   .hero-floats{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+  @media(max-width:720px){.hero-floats{display:none}}
   .float2{position:absolute;white-space:nowrap;font-size:14px;color:var(--mist);opacity:0;
     animation:floatMsg var(--dur,8s) ease-in-out forwards;will-change:transform,opacity}
   .float2.v{color:var(--violet-soft)}
@@ -465,20 +466,28 @@
   pairBtn.addEventListener('click',runPair);
   pairAgain.addEventListener('click',runPair);
 
-  // Waitlist: posts to FormSubmit (free, no account). First real signup triggers a
-  // one-time activation email to the alias below; click it once and capture goes live.
-  const WAITLIST_ENDPOINT='https://formsubmit.co/ajax/saif.fhegazy+woooowaitlist@gmail.com';
-  const form=document.getElementById('waitform'),ok=document.getElementById('ok'),email=document.getElementById('email');
+  // Waitlist -> Supabase (reliable, no activation). Public anon key + insert-only
+  // RLS; every signup is stored and only shows success when it truly saved.
+  const SB_URL='https://gboaaflkspsbovgyazsa.supabase.co';
+  const SB_ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdib2FhZmxrc3BzYm92Z3lhenNhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODMzMzA0NjgsImV4cCI6MjA5ODkwNjQ2OH0.DQ2y6uh8CMNafUkREX2p0BitymLAel5HBYk8DRvwq9o';
+  const form=document.getElementById('waitform'),ok=document.getElementById('ok'),email=document.getElementById('email'),
+        subBtn=form.querySelector('button[type=submit]'),okDefault=ok.textContent;
   form.addEventListener('submit',async(e)=>{
     e.preventDefault();
-    const v=(email.value||'').trim();
+    const v=(email.value||'').trim().toLowerCase();
+    email.style.borderColor='';
     if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){email.focus();email.style.borderColor='#FF6B6B';return;}
-    try{const list=JSON.parse(localStorage.getItem('wooooo_waitlist')||'[]');list.push({e:v,t:Date.now()});localStorage.setItem('wooooo_waitlist',JSON.stringify(list));}catch(_){}
-    form.style.display='none';ok.classList.add('show');
+    const label=subBtn.textContent;subBtn.disabled=true;subBtn.textContent='Sending…';
     try{
-      await fetch(WAITLIST_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
-        body:JSON.stringify({email:v,_subject:'New WOOOOO waitlist signup',_template:'table',_captcha:'false'})});
-    }catch(_){}
+      const r=await fetch(SB_URL+'/rest/v1/waitlist',{method:'POST',
+        headers:{'apikey':SB_ANON,'Authorization':'Bearer '+SB_ANON,'Content-Type':'application/json','Prefer':'return=minimal'},
+        body:JSON.stringify({email:v,source:'wooooo.me'})});
+      if(r.ok || r.status===409){ ok.textContent=okDefault;ok.style.color='';form.style.display='none';ok.classList.add('show'); }
+      else { throw new Error('status '+r.status); }
+    }catch(_){
+      subBtn.disabled=false;subBtn.textContent=label;
+      ok.textContent="Hmm, that didn’t go through — try once more?";ok.style.color='#FF6B6B';ok.classList.add('show');
+    }
   });
 </script>
 </body>
