@@ -479,10 +479,10 @@
     if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){email.focus();email.style.borderColor='#FF6B6B';return;}
     const label=subBtn.textContent;subBtn.disabled=true;subBtn.textContent='Sending…';
     try{
-      const r=await fetch(SB_URL+'/rest/v1/waitlist',{method:'POST',
-        headers:{'apikey':SB_ANON,'Authorization':'Bearer '+SB_ANON,'Content-Type':'application/json','Prefer':'return=minimal'},
-        body:JSON.stringify({email:v,source:'wooooo.me'})});
-      if(r.ok || r.status===409){ ok.textContent=okDefault;ok.style.color='';form.style.display='none';ok.classList.add('show'); }
+      const r=await fetch(SB_URL+'/functions/v1/join-waitlist',{method:'POST',
+        headers:{'apikey':SB_ANON,'Content-Type':'application/json'},
+        body:JSON.stringify({email:v})});
+      if(r.ok){ ok.textContent=okDefault;ok.style.color='';form.style.display='none';ok.classList.add('show'); }
       else { throw new Error('status '+r.status); }
     }catch(_){
       subBtn.disabled=false;subBtn.textContent=label;
